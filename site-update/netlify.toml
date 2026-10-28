@@ -1,6 +1,0 @@
-[build]
-  publish = "site"
-  # Fills in the site address in the link-preview tags (Netlify sets $URL to your main domain).
-  command = "sed -i \"s#__SITE_URL__#${URL}#g\" site/index.html site/aritzia.html"
-  # Skip deploys when the only change is the nightly prices file (keeps Netlify credits at 0 for price updates).
-  ignore = "bash scripts/netlify-ignore.sh"
