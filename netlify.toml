@@ -1,0 +1,5 @@
+[build]
+  publish = "site"
+  command = ""
+  # Skip deploys when the only change is the nightly prices file (keeps Netlify credits at 0 for price updates).
+  ignore = "bash scripts/netlify-ignore.sh"

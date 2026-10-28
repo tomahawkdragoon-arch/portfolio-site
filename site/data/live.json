@@ -1,0 +1,8 @@
+{
+  "asOf": "2026-10-27",
+  "fx": { "USDCAD": 1.4041 },
+  "holdings": {
+    "atz": { "price": 155.02, "currency": "CAD", "weight": 14.0 },
+    "cash": { "weight": 86.0 }
+  }
+}

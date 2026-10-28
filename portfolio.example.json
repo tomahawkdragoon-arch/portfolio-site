@@ -1,0 +1,6 @@
+{
+  "holdings": [
+    { "id": "atz", "symbol": "ATZ.TO", "shares": 10, "currency": "CAD" }
+  ],
+  "cash": { "CAD": 0, "USD": 0 }
+}
