@@ -1,8 +1,17 @@
 {
-  "asOf": "2026-10-27",
-  "fx": { "USDCAD": 1.4041 },
+  "asOf": "2026-10-28",
+  "updated": "2026-10-28T19:22:10+00:00",
+  "fx": {
+    "USDCAD": 1.3996
+  },
   "holdings": {
-    "atz": { "price": 155.02, "currency": "CAD", "weight": 14.0 },
-    "cash": { "weight": 86.0 }
+    "atz": {
+      "price": 152.73,
+      "currency": "CAD",
+      "weight": 13.8
+    },
+    "cash": {
+      "weight": 86.2
+    }
   }
 }
