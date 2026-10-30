@@ -274,6 +274,9 @@ footer p{max-width:72ch; margin:0}
 .note-panel ul{margin:0; padding-left:18px; display:grid; gap:6px}
 .note-panel li::marker{color:var(--olive)}
 .note-lede{color:var(--ink)!important}
+.note-fig{margin:6px 0 14px}
+.note-fig img{display:block; width:100%; height:auto; border-radius:12px; border:1px solid var(--line); background:#f4f4f4}
+.note-fig figcaption{margin-top:7px; font-size:.74rem; color:var(--faint)}
 .note-stats{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); margin:20px 0 4px; border:1px solid var(--line); border-radius:12px; overflow:hidden}
 .note-stats div{padding:11px 14px}
 .note-stats div + div{border-left:1px solid var(--line)}
@@ -366,7 +369,7 @@ footer p{max-width:72ch; margin:0}
         </figure>
         <figure class="proof">
           <button class="shot" type="button" data-full="proof/usd-voo-2026-10-30.webp" aria-label="Enlarge the US-dollar account screenshot">
-            <img src="proof/usd-voo-2026-10-30.webp" width="2880" height="1572" loading="lazy" alt="TD Direct Investing USD account: 3 shares of VOO plus US-dollar cash, with each digit of the dollar amounts replaced with an X.">
+            <img src="proof/usd-voo-2026-10-30.webp" width="2878" height="1550" loading="lazy" alt="TD Direct Investing USD account: VOO position plus US-dollar cash, with the account number hidden and each digit of the dollar amounts replaced with an X.">
           </button>
           <figcaption class="proof-cap"><span><strong>USD account</strong> · VOO position and US-dollar cash</span><span class="num">Oct 30, 2026</span></figcaption>
         </figure>
@@ -420,7 +423,19 @@ footer p{max-width:72ch; margin:0}
       <li><strong>Discipline.</strong> With half the portfolio on autopilot, I&rsquo;m less tempted to overtrade or chase hot stocks, and my few individual picks get my full attention.</li>
     </ul>
     <h3>My plan</h3>
-    <p>I started the position on Oct 30, 2026, a day the market fell on big-tech earnings, and I&rsquo;m building it toward about half the portfolio. I&rsquo;ll add on dips toward a key monthly level, and if the market doesn&rsquo;t get there by the end of January, I&rsquo;ll keep buying about once a month anyway so I&rsquo;m not left waiting in cash.</p>
+    <p>I started the position on Oct 30, 2026, a day the market fell on big-tech earnings, and I&rsquo;m building it toward about half the portfolio. The monthly chart decides when I add the rest.</p>
+    <h3>Entry plan: the monthly chart</h3>
+    <figure class="note-fig">
+      <a href="img/voo-monthly-chart.webp" target="_blank" rel="noopener"><img src="img/voo-monthly-chart.webp" width="1741" height="1373" loading="lazy" alt="Monthly chart of S&amp;P 500 futures from 2020 to 2026, with Fibonacci retracements on each leg up. Pullbacks in October 2022, April 2025 and March 2026 each reversed in the 0.5 to 0.79 zone, and the current leg's 0.5 to 0.62 zone is marked as the area to add the last 25%."></a>
+      <figcaption>S&amp;P 500 futures (ES), monthly. Tap to open full size. Chart: TradingView.</figcaption>
+    </figure>
+    <p>Since 2022, every big rally in the S&amp;P 500 has pulled back to the same zone before the next leg up: the <strong>0.5&ndash;0.79 Fibonacci retracement</strong> of the move before it, which is also where the market had left a price imbalance gap on the way up.</p>
+    <ul>
+      <li><strong>October 2022:</strong> bottomed at the 0.79 level of the 2020&ndash;21 rally, then started the next leg.</li>
+      <li><strong>April 2025:</strong> the same pattern, turning around at the 0.79 level and the imbalance.</li>
+      <li><strong>March 2026:</strong> a shallower pullback into the 0.5&ndash;0.62 zone, which held.</li>
+    </ul>
+    <p><strong>My conditions:</strong> I bought the first 25% near the top of the current leg. If the market pulls back into this leg&rsquo;s 0.5&ndash;0.62 zone (about 7,150&ndash;7,250 on S&amp;P 500 futures, roughly 5% below today), I add the last 25% there. If it doesn&rsquo;t get there, I add gradually from January to March instead. Past patterns don&rsquo;t guarantee the next one, which is why the time-based fallback exists.</p>
     <h3>What would change it</h3>
     <p>Nothing about a single company. A falling market is when I add, not when I sell. I&rsquo;d only change this plan if my goals or time horizon change.</p>
   </article>
