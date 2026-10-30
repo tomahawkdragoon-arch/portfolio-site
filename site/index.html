@@ -256,6 +256,31 @@ footer p{max-width:72ch; margin:0}
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none !important; transition:none !important}
 }
+
+/* "why I own it" note */
+.note-modal{position:fixed; inset:0; z-index:60; display:grid; place-items:center; padding:max(20px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(20px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); background:rgba(10,11,7,.72); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); opacity:0; transition:opacity .45s var(--ease)}
+.note-modal[hidden]{display:none}
+.note-modal.open{opacity:1}
+.note-panel{position:relative; width:min(640px, 100%); max-height:calc(100dvh - 48px); overflow-y:auto; overscroll-behavior:contain; padding:34px 32px 28px; border:1px solid var(--line); border-radius:18px; background:var(--surface); box-shadow:0 40px 90px -30px rgba(0,0,0,.8); transform:translateY(14px) scale(.98); transition:transform .55s var(--ease)}
+.note-modal.open .note-panel{transform:none}
+.note-close{position:absolute; top:16px; right:16px; padding:7px 13px; border-radius:99px; border:1px solid var(--line); background:transparent; color:var(--muted); font:inherit; font-size:.78rem; cursor:pointer}
+.note-close:hover,.note-close:focus-visible{border-color:var(--accent); color:var(--ink)}
+.note-kicker{display:flex; flex-wrap:wrap; align-items:center; gap:10px; padding-right:96px; font-family:var(--f-mono); font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted)}
+.note-kicker .pill{padding:3px 9px; border:1px solid var(--line); border-radius:6px; color:var(--accent); letter-spacing:.12em}
+.note-panel h2{font-family:var(--f-display); font-weight:400; font-size:clamp(2rem, 6vw, 2.7rem); line-height:1.05; margin:14px 0 10px; color:var(--ink)}
+.note-panel h3{font-size:.98rem; font-weight:600; margin:22px 0 6px; color:var(--ink)}
+.note-panel p,.note-panel li{color:#d9d3c1; line-height:1.6; font-size:.95rem}
+.note-panel p{margin:0}
+.note-panel ul{margin:0; padding-left:18px; display:grid; gap:6px}
+.note-panel li::marker{color:var(--olive)}
+.note-lede{color:var(--ink)!important}
+.note-stats{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); margin:20px 0 4px; border:1px solid var(--line); border-radius:12px; overflow:hidden}
+.note-stats div{padding:11px 14px}
+.note-stats div + div{border-left:1px solid var(--line)}
+.note-stats dt{font-size:.62rem; letter-spacing:.14em; text-transform:uppercase; color:var(--faint)}
+.note-stats dd{margin:3px 0 0; font-family:var(--f-mono); font-size:.98rem; color:var(--ink)}
+@media (max-width:560px){ .note-panel{padding:28px 20px 22px} .note-stats{grid-template-columns:repeat(2, minmax(0,1fr))} .note-stats div:nth-child(3){border-left:0} .note-stats div:nth-child(n+3){border-top:1px solid var(--line)} }
+@media (prefers-reduced-motion: reduce){ .note-modal,.note-panel{transition:none} }
 </style>
 <style>html,body{margin:0}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
@@ -279,7 +304,7 @@ footer p{max-width:72ch; margin:0}
     <section class="hero" id="portfolio" aria-labelledby="h-title">
       <div class="eyebrow">Portfolio</div>
       <h1 id="h-title">What I own, <em>and why.</em></h1>
-      <p class="lede">Long-term positions, each backed by a written research report. Weights are shown as a share of the portfolio.</p>
+      <p class="lede">Long-term positions: individual stocks backed by a written research report, plus a core S&amp;P 500 index fund. Weights are shown as a share of the portfolio.</p>
       <div class="facts" id="facts"></div>
 
       <div class="chart" id="chart">
@@ -340,10 +365,10 @@ footer p{max-width:72ch; margin:0}
           <figcaption class="proof-cap"><span><strong>CAD account</strong> · Aritzia position and Canadian cash</span><span class="num">Oct 28, 2026</span></figcaption>
         </figure>
         <figure class="proof">
-          <button class="shot" type="button" data-full="proof/usd-cash-2026-10-28.webp" aria-label="Enlarge the US-dollar account screenshot">
-            <img src="proof/usd-cash-2026-10-28.webp" width="2880" height="1560" loading="lazy" alt="TD Direct Investing USD account: US-dollar cash, no investments, with the account number hidden and each digit of the dollar amounts replaced with an X.">
+          <button class="shot" type="button" data-full="proof/usd-voo-2026-10-30.webp" aria-label="Enlarge the US-dollar account screenshot">
+            <img src="proof/usd-voo-2026-10-30.webp" width="2880" height="1572" loading="lazy" alt="TD Direct Investing USD account: 3 shares of VOO plus US-dollar cash, with each digit of the dollar amounts replaced with an X.">
           </button>
-          <figcaption class="proof-cap"><span><strong>USD account</strong> · US-dollar cash, ready to deploy</span><span class="num">Oct 28, 2026</span></figcaption>
+          <figcaption class="proof-cap"><span><strong>USD account</strong> · VOO position and US-dollar cash</span><span class="num">Oct 30, 2026</span></figcaption>
         </figure>
       </div>
     </section>
@@ -372,27 +397,56 @@ footer p{max-width:72ch; margin:0}
   </main>
 
   <footer>
-    <p>Disclosure: I own the securities discussed on this site. Weights are a percentage of my portfolio; prices are in Canadian dollars at the last close shown. This site is for educational purposes and is not investment advice.</p>
+    <p>Disclosure: I own the securities discussed on this site. Weights are a percentage of my portfolio; prices are in each security&rsquo;s trading currency (C$ or US$) at the last close shown. This site is for educational purposes and is not investment advice.</p>
   </footer>
 </div>
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Brokerage statement" hidden><button class="lb-close" type="button" id="lb-close">Close ×</button><img id="lb-img" src="proof/atz-holdings-2026-10-28.webp" alt="TD Direct Investing account screenshot, enlarged"></div>
+<div class="note-modal" id="note-voo" role="dialog" aria-modal="true" aria-labelledby="note-voo-title" hidden>
+  <article class="note-panel">
+    <button class="note-close" type="button" data-close>Close ×</button>
+    <div class="note-kicker"><span class="pill">Core holding</span>NYSE Arca: VOO</div>
+    <h2 id="note-voo-title">Why I own VOO</h2>
+    <p class="note-lede">Vanguard S&amp;P 500 ETF: one fund that owns the 500 largest companies in the US, weighted by size. It&rsquo;s the base of the portfolio that doesn&rsquo;t depend on me being right about any single company.</p>
+    <dl class="note-stats">
+      <div><dt>Average cost</dt><dd>US$691.08</dd></div>
+      <div><dt>Weight today</dt><dd class="js-voo-weight">24.1%</dd></div>
+      <div><dt>Target</dt><dd>~50%</dd></div>
+      <div><dt>Annual fee</dt><dd>0.03%</dd></div>
+    </dl>
+    <h3>Why it&rsquo;s here</h3>
+    <ul>
+      <li><strong>Diversification.</strong> My stock picks are concentrated bets. VOO spreads the rest across the whole US market, so one bad call can&rsquo;t sink the portfolio.</li>
+      <li><strong>Long-term growth.</strong> Over long periods the S&amp;P 500 has averaged roughly 10% a year including dividends. There have been deep drops along the way, but holding through them is how that return has been earned.</li>
+      <li><strong>Discipline.</strong> With half the portfolio on autopilot, I&rsquo;m less tempted to overtrade or chase hot stocks, and my few individual picks get my full attention.</li>
+    </ul>
+    <h3>My plan</h3>
+    <p>I started the position on Oct 30, 2026, a day the market fell on big-tech earnings, and I&rsquo;m building it toward about half the portfolio. I&rsquo;ll add on dips toward a key monthly level, and if the market doesn&rsquo;t get there by the end of January, I&rsquo;ll keep buying about once a month anyway so I&rsquo;m not left waiting in cash.</p>
+    <h3>What would change it</h3>
+    <p>Nothing about a single company. A falling market is when I add, not when I sell. I&rsquo;d only change this plan if my goals or time horizon change.</p>
+  </article>
+</div>
 
 <script src="feed.js"></script>
 <script type="module">
 /* ---------- Portfolio data: edit this block to update the site ---------- */
-let AS_OF = "2026-10-28";
+let AS_OF = "2026-10-30";
 const HOLDINGS = [
-  { id:"atz",  name:"Aritzia",            ticker:"TSX: ATZ", type:"Stock",
+  { id:"atz",  name:"Aritzia",            ticker:"TSX: ATZ", type:"Stock", currency:"CAD",
     weight:12.7, entry:122.91, current:153.28, icon:"hanger", color:"--seg-1",
     report:{ url:"aritzia.html", date:"2026-10-27",
       title:"Aritzia: David in Designer Clothing",
       subtitle:"How Aritzia Is Taking on the Giants of Apparel" } },
+  { id:"voo",  name:"Vanguard S&P 500 ETF", ticker:"NYSE Arca: VOO", type:"ETF", currency:"USD",
+    weight:24.1, entry:691.08, current:690.94, icon:"bars", color:"--seg-2", note:"Core index holding",
+    report:{ url:"#why-voo", kind:"note", label:"Why I own it" } },
   { id:"cash", name:"Cash",               ticker:"Ready to deploy", type:"Cash",
-    weight:87.3, entry:null, current:null, icon:"coin", color:"--seg-4", report:null }
+    weight:63.2, entry:null, current:null, icon:"coin", color:"--seg-4", report:null }
 ];
 const TRADES = [
-  { date:"2026-10-08", logged:"2026-10-28", side:"buy", name:"Aritzia", ticker:"TSX: ATZ", price:122.91, weightAfter:11.4,
-    note:"Opened position ahead of Q2 FY27 earnings.", proof:"#verify" }
+  { date:"2026-10-08", logged:"2026-10-28", side:"buy", name:"Aritzia", ticker:"TSX: ATZ", price:122.91, currency:"CAD", weightAfter:11.4,
+    note:"Opened position ahead of Q2 FY27 earnings.", proof:"#verify" },
+  { date:"2026-10-30", logged:"2026-10-30", side:"buy", name:"Vanguard S&P 500 ETF", ticker:"NYSE Arca: VOO", price:691.08, currency:"USD", weightAfter:24.1,
+    note:"Started my core S&P 500 position on a down day. I plan to build it toward half the portfolio over the coming months.", proof:"#verify" }
 ];
 /* ------------------------------------------------------------------------- */
 
@@ -434,7 +488,7 @@ const ICONS = {
 };
 
 const fmtMoney = (v, cur = "CAD") => v == null ? "—" : (cur === "USD" ? "US$" : "C$") + v.toFixed(2);
-const fmtPct = v => (v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(v).toFixed(1) + "%";
+const fmtPct = v => { const r = Math.round(v * 10) / 10; return (r > 0 ? "+" : r < 0 ? "−" : "") + Math.abs(r).toFixed(1) + "%"; };
 const fmtDate = s => new Date(s + "T12:00:00").toLocaleDateString("en-CA", { month:"short", day:"numeric", year:"numeric" });
 const ret = h => (h.entry && h.current) ? (h.current / h.entry - 1) * 100 : null;
 const css = name => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
@@ -442,7 +496,7 @@ const css = name => getComputedStyle(document.documentElement).getPropertyValue(
 /* facts line */
 const NPOS = HOLDINGS.filter(h => h.type !== "Cash").length, HAS_CASH = HOLDINGS.some(h => h.type === "Cash");
 const POS_LABEL = NPOS + (NPOS === 1 ? " position" : " positions") + (HAS_CASH ? " + cash" : "");
-const reports = HOLDINGS.filter(h => h.report);
+const reports = HOLDINGS.filter(h => h.report && h.report.kind !== "note");
 document.getElementById("facts").innerHTML =
   `<span><b>${NPOS}</b> ${NPOS === 1 ? "position" : "positions"}</span><span><b>${reports.length}</b> ${reports.length === 1 ? "report" : "reports"}</span><span><b>${TRADES.length}</b> ${TRADES.length === 1 ? "trade" : "trades"} logged</span><span>Prices as of <b>${fmtDate(AS_OF)}</b></span>`;
 document.getElementById("asof-note").textContent = "Prices as of the " + fmtDate(AS_OF) + " close";
@@ -475,7 +529,7 @@ HOLDINGS.forEach((h, i) => {
   const link = document.createElementNS(NS, h.report ? "a" : "g");
   link.setAttribute("class", "seg");
   link.setAttribute("tabindex", "0");
-  link.setAttribute("aria-label", `${h.name}, ${h.weight}% of portfolio` + (h.report ? ", view report" : ""));
+  link.setAttribute("aria-label", `${h.name}, ${h.weight}% of portfolio` + (h.report ? ", " + (h.report.label || "view report").toLowerCase() : ""));
   if (h.report){ link.setAttribute("href", h.report.url); if (isExt(h.report.url)){ link.setAttribute("target", "_blank"); link.setAttribute("rel", "noopener"); } }
   const [dx, dy] = pt(POP, mid).map((v, k) => v - (k ? CY : CX));
   link.dataset.dx = dx; link.dataset.dy = dy; link.dataset.mid = mid;
@@ -511,8 +565,8 @@ HOLDINGS.forEach((h, i) => {
   link.addEventListener("pointerdown", () => {
     if (!h.report || (lastPointer === "touch" && active !== h.id)) return;
     link.classList.add("pressing"); tip.classList.add("pressing");
-    const lbl = tip.querySelector(".go-label"); if (lbl) lbl.textContent = "Opening report…";
-    setTimeout(() => { link.classList.remove("pressing"); tip.classList.remove("pressing"); if (lbl) lbl.textContent = "View report"; }, 900);
+    const lbl = tip.querySelector(".go-label"); if (lbl) lbl.textContent = "Opening…";
+    setTimeout(() => { link.classList.remove("pressing"); tip.classList.remove("pressing"); if (lbl) lbl.textContent = lbl.dataset.label; }, 900);
   });
   link.addEventListener("pointerleave", e => { if (e.pointerType !== "touch") leaveSoon(); });
   link.addEventListener("focus", () => activate(h.id));
@@ -548,8 +602,8 @@ HOLDINGS.forEach((h, i) => {
     <div class="r num c-cur ${h.current ? "" : "dim"}">${fmtMoney(h.current, h.currency)}</div>
     <div class="r num c-ret ${rv == null ? "dim" : rv >= 0 ? "up" : "down"}">${rv == null ? "—" : fmtPct(rv)}</div>
     <div class="c-act">${h.report
-      ? `<a class="btn" href="${h.report.url}"${tgt(h.report.url)}>View report <span aria-hidden="true">→</span></a>`
-      : `<span class="btn off">No report</span>`}</div>
+      ? `<a class="btn" href="${h.report.url}"${tgt(h.report.url)}>${h.report.label || "View report"} <span aria-hidden="true">→</span></a>`
+      : `<span class="btn off">${h.note ? "Index fund" : "No report"}</span>`}</div>
     <div class="c-mobile num">${h.entry ? `Entry ${fmtMoney(h.entry, h.currency)} · Now ${fmtMoney(h.current, h.currency)} · <span class="${rv >= 0 ? "up" : "down"}">${fmtPct(rv)}</span>` : (h.target ? "Target allocation" : "")}</div>`;
   row.addEventListener("pointerenter", () => { clearTimeout(leaveTimer); activate(h.id, null, true); });
   row.addEventListener("pointerleave", deactivate);
@@ -610,8 +664,8 @@ tip.addEventListener("pointerenter", () => clearTimeout(leaveTimer));
 tip.addEventListener("pointerleave", e => { if (e.pointerType !== "touch") leaveSoon(); });
 tip.addEventListener("click", e => {
   const go = e.target.closest(".tip-foot.go"); if (!go) return;
-  tip.classList.add("pressing"); const lbl = go.querySelector(".go-label"); if (lbl) lbl.textContent = "Opening report…";
-  setTimeout(() => { tip.classList.remove("pressing"); if (lbl) lbl.textContent = "View report"; }, 900);
+  tip.classList.add("pressing"); const lbl = go.querySelector(".go-label"); if (lbl) lbl.textContent = "Opening…";
+  setTimeout(() => { tip.classList.remove("pressing"); if (lbl) lbl.textContent = lbl.dataset.label; }, 900);
 });
 
 function activate(id, e, fromRow){
@@ -641,8 +695,8 @@ function activate(id, e, fromRow){
       <dt>Return</dt><dd class="${rv >= 0 ? "up" : "down"}">${fmtPct(rv)}</dd>` : ""}
     </dl>
     ${h.report
-      ? `<a class="tip-foot go" href="${h.report.url}"${tgt(h.report.url)}><span class="go-label">View report</span><span class="hint">open<span class="arr" aria-hidden="true">→</span></span></a>`
-      : `<div class="tip-foot none">${h.type === "Cash" ? "Deploying capital soon" : "Report coming soon"}</div>`}`;
+      ? `<a class="tip-foot go" href="${h.report.url}"${tgt(h.report.url)}><span class="go-label" data-label="${h.report.label || "View report"}">${h.report.label || "View report"}</span><span class="hint">open<span class="arr" aria-hidden="true">→</span></span></a>`
+      : `<div class="tip-foot none">${h.type === "Cash" ? "Deploying capital soon" : (h.note || "Report coming soon")}</div>`}`;
   tip.classList.add("show");
   placeTipAtSegment(id);
 }
@@ -702,6 +756,34 @@ function deactivate(){
   tweenBig(total);
   cSub.textContent = POS_LABEL;
 }
+
+/* "why I own it" notes open over the page from #why-<id> links */
+(() => {
+  const RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let openEl = null, opener = null;
+  const html = document.documentElement;
+  function show(id){
+    const m = document.getElementById("note-" + id); if (!m || openEl === m) return;
+    const w = (HOLDINGS.find(h => h.id === id) || {}).weight;
+    m.querySelectorAll(".js-" + id + "-weight").forEach(el => { if (w != null) el.textContent = w.toFixed(1) + "%"; });
+    opener = document.activeElement; openEl = m; m.hidden = false; html.classList.add("no-scroll");
+    requestAnimationFrame(() => requestAnimationFrame(() => m.classList.add("open")));
+    m.querySelector("[data-close]").focus({ preventScroll:true });
+  }
+  function hide(){
+    if (!openEl) return; const m = openEl; openEl = null;
+    m.classList.remove("open"); html.classList.remove("no-scroll");
+    setTimeout(() => { m.hidden = true; if (opener && opener.focus) opener.focus({ preventScroll:true }); }, RM ? 0 : 450);
+  }
+  function route(){ const mt = location.hash.match(/^#why-([a-z0-9-]+)$/); if (mt) show(mt[1]); else hide(); }
+  function close(){ history.replaceState(null, "", location.pathname + location.search); hide(); }
+  document.querySelectorAll(".note-modal").forEach(m => {
+    m.addEventListener("click", e => { if (e.target === m || e.target.closest("[data-close]")) close(); });
+  });
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && openEl) close(); });
+  addEventListener("hashchange", route);
+  route();
+})();
 </script>
 
 </body>
