@@ -277,6 +277,7 @@ footer p{max-width:72ch; margin:0}
 .note-fig{margin:6px 0 14px}
 .note-fig img{display:block; width:100%; height:auto; border-radius:12px; border:1px solid var(--line); background:#f4f4f4}
 .note-fig figcaption{margin-top:7px; font-size:.74rem; color:var(--faint)}
+.note-stat-label{margin:18px 0 -12px!important; font-family:var(--f-mono); font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent)!important}
 .note-stats{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); margin:20px 0 4px; border:1px solid var(--line); border-radius:12px; overflow:hidden}
 .note-stats div{padding:11px 14px}
 .note-stats div + div{border-left:1px solid var(--line)}
@@ -407,26 +408,34 @@ footer p{max-width:72ch; margin:0}
 <div class="note-modal" id="note-voo" role="dialog" aria-modal="true" aria-labelledby="note-voo-title" hidden>
   <article class="note-panel">
     <button class="note-close" type="button" data-close>Close ×</button>
-    <div class="note-kicker"><span class="pill">Core holding</span>NYSE Arca: VOO</div>
-    <h2 id="note-voo-title">Why I own VOO</h2>
-    <p class="note-lede">Vanguard S&amp;P 500 ETF: one fund that owns the 500 largest companies in the US, weighted by size. It&rsquo;s the base of the portfolio that doesn&rsquo;t depend on me being right about any single company.</p>
+    <div class="note-kicker"><span class="pill">Core holdings</span>NYSE Arca: VOO &middot; NASDAQ: QQQ</div>
+    <h2 id="note-voo-title">Why I own VOO and QQQ</h2>
+    <p class="note-lede">Vanguard S&amp;P 500 ETF: one fund that owns the 500 largest companies in the US, weighted by size. It&rsquo;s the base of the portfolio that doesn&rsquo;t depend on me being right about any single company. Alongside it, Invesco QQQ owns the 100 largest Nasdaq companies, tilting the portfolio toward technology and growth.</p>
+    <p class="note-stat-label">VOO &middot; S&amp;P 500</p>
     <dl class="note-stats">
       <div><dt>Average cost</dt><dd>US$691.08</dd></div>
-      <div><dt>Weight today</dt><dd class="js-voo-weight">24.1%</dd></div>
-      <div><dt>Target</dt><dd>~50%</dd></div>
+      <div><dt>Weight today</dt><dd class="js-voo-weight">23.8%</dd></div>
+      <div><dt>Target</dt><dd>~35%</dd></div>
       <div><dt>Annual fee</dt><dd>0.03%</dd></div>
+    </dl>
+    <p class="note-stat-label">QQQ &middot; Nasdaq-100</p>
+    <dl class="note-stats">
+      <div><dt>Average cost</dt><dd>US$653.84</dd></div>
+      <div><dt>Weight today</dt><dd class="js-qqq-weight">22.8%</dd></div>
+      <div><dt>Target</dt><dd>~25%</dd></div>
+      <div><dt>Annual fee</dt><dd>0.20%</dd></div>
     </dl>
     <h3>Why it&rsquo;s here</h3>
     <ul>
       <li><strong>Diversification.</strong> My stock picks are concentrated bets. VOO spreads the rest across the whole US market, so one bad call can&rsquo;t sink the portfolio.</li>
       <li><strong>Long-term growth.</strong> Over long periods the S&amp;P 500 has averaged roughly 10% a year including dividends. There have been deep drops along the way, but holding through them is how that return has been earned.</li>
-      <li><strong>Discipline.</strong> With half the portfolio on autopilot, I&rsquo;m less tempted to overtrade or chase hot stocks, and my few individual picks get my full attention.</li>
+      <li><strong>Discipline.</strong> With more than half the portfolio on autopilot, I&rsquo;m less tempted to overtrade or chase hot stocks, and my few individual picks get my full attention.</li>
     </ul>
     <h3>My plan</h3>
-    <p>I started the position on Oct 30, 2026, a day the market fell on big-tech earnings, and I&rsquo;m building it toward about half the portfolio. The monthly chart decides when I add the rest.</p>
+    <p>I started VOO on Oct 30, 2026, a day the market fell on big-tech earnings, and added QQQ on Nov 5. QQQ is close to its target. Next, I plan to put about another 10% of the portfolio into the S&amp;P 500, which leaves roughly 40% for hand-picked stocks. The monthly chart decides when I add it.</p>
     <h3>Entry plan: the monthly chart</h3>
     <figure class="note-fig">
-      <a href="img/voo-monthly-chart.webp" target="_blank" rel="noopener"><img src="img/voo-monthly-chart.webp" width="1741" height="1373" loading="lazy" alt="Monthly chart of S&amp;P 500 futures from 2020 to 2026, with Fibonacci retracements on each leg up. Pullbacks in October 2022, April 2025 and March 2026 each reversed in the 0.5 to 0.79 zone, and the current leg's 0.5 to 0.62 zone is marked as the area to add the last 25%."></a>
+      <a href="img/voo-monthly-chart.webp" target="_blank" rel="noopener"><img src="img/voo-monthly-chart.webp" width="1741" height="1373" loading="lazy" alt="Monthly chart of S&amp;P 500 futures from 2020 to 2026, with Fibonacci retracements on each leg up. Pullbacks in October 2022, April 2025 and March 2026 each reversed in the 0.5 to 0.79 zone, and the current leg's 0.5 to 0.62 zone is marked as the area to add more."></a>
       <figcaption>S&amp;P 500 futures (ES), monthly. Tap to open full size. Chart: TradingView.</figcaption>
     </figure>
     <p>Since 2022, every big rally in the S&amp;P 500 has pulled back to the same zone before the next leg up: the <strong>0.5&ndash;0.79 Fibonacci retracement</strong> of the move before it, which is also where the market had left a price imbalance gap on the way up.</p>
@@ -435,7 +444,7 @@ footer p{max-width:72ch; margin:0}
       <li><strong>April 2025:</strong> the same pattern, turning around at the 0.79 level and the imbalance.</li>
       <li><strong>March 2026:</strong> a shallower pullback into the 0.5&ndash;0.62 zone, which held.</li>
     </ul>
-    <p><strong>My conditions:</strong> I bought the first 25% near the top of the current leg. If the market pulls back into this leg&rsquo;s 0.5&ndash;0.62 zone (about 7,150&ndash;7,250 on S&amp;P 500 futures, roughly 5% below today), I add the last 25% there. If it doesn&rsquo;t get there, I add gradually from January to March instead. Past patterns don&rsquo;t guarantee the next one, which is why the time-based fallback exists.</p>
+    <p><strong>My conditions:</strong> I bought the first 25% near the top of the current leg. If the market pulls back into this leg&rsquo;s 0.5&ndash;0.62 zone (about 7,150&ndash;7,250 on S&amp;P 500 futures), I add the next 10% there. If it doesn&rsquo;t get there, I add gradually from January to March instead. Past patterns don&rsquo;t guarantee the next one, which is why the time-based fallback exists.</p>
     <h3>What would change it</h3>
     <p>Nothing about a single company. A falling market is when I add, not when I sell. I&rsquo;d only change this plan if my goals or time horizon change.</p>
   </article>
@@ -455,8 +464,8 @@ const HOLDINGS = [
     weight:23.8, entry:691.08, current:683.86, icon:"bars", color:"--seg-2", note:"Core index holding",
     report:{ url:"#why-voo", kind:"note", label:"Why I own it" } },
   { id:"qqq",  name:"Invesco QQQ Trust", ticker:"NASDAQ: QQQ", type:"ETF", currency:"USD",
-    weight:22.8, entry:653.84, current:658.00, icon:"chip", color:"--seg-3", report:null,
-    note:"Growth tilt: the 100 largest Nasdaq companies" },
+    weight:22.8, entry:653.84, current:658.00, icon:"chip", color:"--seg-3", note:"Growth tilt",
+    report:{ url:"#why-voo", kind:"note", label:"Why I own it" } },
   { id:"cash", name:"Cash",               ticker:"Ready to deploy", type:"Cash",
     weight:40.2, entry:null, current:null, icon:"coin", color:"--seg-4", report:null }
 ];
@@ -785,7 +794,7 @@ function deactivate(){
   function show(id){
     const m = document.getElementById("note-" + id); if (!m || openEl === m) return;
     const w = (HOLDINGS.find(h => h.id === id) || {}).weight;
-    m.querySelectorAll(".js-" + id + "-weight").forEach(el => { if (w != null) el.textContent = w.toFixed(1) + "%"; });
+    HOLDINGS.forEach(h => m.querySelectorAll(".js-" + h.id + "-weight").forEach(el => { el.textContent = h.weight.toFixed(1) + "%"; }));
     opener = document.activeElement; openEl = m; m.hidden = false; html.classList.add("no-scroll");
     requestAnimationFrame(() => requestAnimationFrame(() => m.classList.add("open")));
     m.querySelector("[data-close]").focus({ preventScroll:true });
@@ -796,7 +805,15 @@ function deactivate(){
     setTimeout(() => { m.hidden = true; if (opener && opener.focus) opener.focus({ preventScroll:true }); }, RM ? 0 : 450);
   }
   function route(){ const mt = location.hash.match(/^#why-([a-z0-9-]+)$/); if (mt) show(mt[1]); else hide(); }
-  function close(){ history.replaceState(null, "", location.pathname + location.search); hide(); }
+  function close(){ try { if (location.hash) history.replaceState(null, "", location.pathname + location.search); } catch (e) {} hide(); }
+  // Open notes directly on click so they work even where the page can't change its own address (e.g. embedded previews).
+  document.addEventListener("click", e => {
+    const a = e.target.closest('a[href^="#why-"]'); if (!a || e.defaultPrevented) return;
+    e.preventDefault();
+    const id = a.getAttribute("href").slice(5);
+    try { history.replaceState(null, "", "#why-" + id); } catch (err) {}
+    show(id);
+  });
   document.querySelectorAll(".note-modal").forEach(m => {
     m.addEventListener("click", e => { if (e.target === m || e.target.closest("[data-close]")) close(); });
   });
