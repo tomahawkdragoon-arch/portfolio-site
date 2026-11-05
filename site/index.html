@@ -307,7 +307,7 @@ footer p{max-width:72ch; margin:0}
     <section class="hero" id="portfolio" aria-labelledby="h-title">
       <div class="eyebrow">Portfolio</div>
       <h1 id="h-title">What I own, <em>and why.</em></h1>
-      <p class="lede">Long-term positions: individual stocks backed by a written research report, plus a core S&amp;P 500 index fund. Weights are shown as a share of the portfolio.</p>
+      <p class="lede">Long-term positions: individual stocks backed by a written research report, plus core S&amp;P 500 and Nasdaq-100 index funds. Weights are shown as a share of the portfolio.</p>
       <div class="facts" id="facts"></div>
 
       <div class="chart" id="chart">
@@ -362,16 +362,16 @@ footer p{max-width:72ch; margin:0}
       <p class="proof-intro">My whole portfolio sits in one TD Direct Investing account with a Canadian-dollar side and a US-dollar side. Both are shown below, with the account number hidden and dollar amounts masked.</p>
       <div class="proof-grid">
         <figure class="proof">
-          <button class="shot" type="button" data-full="proof/atz-holdings-2026-10-28.webp" aria-label="Enlarge the Canadian-dollar account screenshot">
-            <img src="proof/atz-holdings-2026-10-28.webp" width="2880" height="1576" loading="lazy" alt="TD Direct Investing CAD account: Aritzia (ATZ) position and Canadian cash, with the account number hidden and each digit of the dollar amounts replaced with an X.">
+          <button class="shot" type="button" data-full="proof/atz-holdings-2026-11-05.webp" aria-label="Enlarge the Canadian-dollar account screenshot">
+            <img src="proof/atz-holdings-2026-11-05.webp" width="2880" height="1478" loading="lazy" alt="TD Direct Investing CAD account: Aritzia (ATZ) position and Canadian cash, with the account number hidden and each digit of the dollar amounts replaced with an X.">
           </button>
-          <figcaption class="proof-cap"><span><strong>CAD account</strong> · Aritzia position and Canadian cash</span><span class="num">Oct 28, 2026</span></figcaption>
+          <figcaption class="proof-cap"><span><strong>CAD account</strong> · Aritzia position and Canadian cash</span><span class="num">Nov 5, 2026</span></figcaption>
         </figure>
         <figure class="proof">
-          <button class="shot" type="button" data-full="proof/usd-voo-2026-10-30.webp" aria-label="Enlarge the US-dollar account screenshot">
-            <img src="proof/usd-voo-2026-10-30.webp" width="2878" height="1550" loading="lazy" alt="TD Direct Investing USD account: VOO position plus US-dollar cash, with the account number hidden and each digit of the dollar amounts replaced with an X.">
+          <button class="shot" type="button" data-full="proof/usd-holdings-2026-11-05.webp" aria-label="Enlarge the US-dollar account screenshot">
+            <img src="proof/usd-holdings-2026-11-05.webp" width="2880" height="1462" loading="lazy" alt="TD Direct Investing USD account: QQQ and VOO positions plus US-dollar cash, with the account number hidden and each digit of the dollar amounts replaced with an X.">
           </button>
-          <figcaption class="proof-cap"><span><strong>USD account</strong> · VOO position and US-dollar cash</span><span class="num">Oct 30, 2026</span></figcaption>
+          <figcaption class="proof-cap"><span><strong>USD account</strong> · QQQ, VOO and US-dollar cash</span><span class="num">Nov 5, 2026</span></figcaption>
         </figure>
       </div>
     </section>
@@ -403,7 +403,7 @@ footer p{max-width:72ch; margin:0}
     <p>Disclosure: I own the securities discussed on this site. Weights are a percentage of my portfolio; prices are in each security&rsquo;s trading currency (C$ or US$) at the last close shown. This site is for educational purposes and is not investment advice.</p>
   </footer>
 </div>
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Brokerage statement" hidden><button class="lb-close" type="button" id="lb-close">Close ×</button><img id="lb-img" src="proof/atz-holdings-2026-10-28.webp" alt="TD Direct Investing account screenshot, enlarged"></div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Brokerage statement" hidden><button class="lb-close" type="button" id="lb-close">Close ×</button><img id="lb-img" src="proof/atz-holdings-2026-11-05.webp" alt="TD Direct Investing account screenshot, enlarged"></div>
 <div class="note-modal" id="note-voo" role="dialog" aria-modal="true" aria-labelledby="note-voo-title" hidden>
   <article class="note-panel">
     <button class="note-close" type="button" data-close>Close ×</button>
@@ -444,24 +444,29 @@ footer p{max-width:72ch; margin:0}
 <script src="feed.js"></script>
 <script type="module">
 /* ---------- Portfolio data: edit this block to update the site ---------- */
-let AS_OF = "2026-10-30";
+let AS_OF = "2026-11-05";
 const HOLDINGS = [
   { id:"atz",  name:"Aritzia",            ticker:"TSX: ATZ", type:"Stock", currency:"CAD",
-    weight:12.7, entry:122.91, current:153.28, icon:"hanger", color:"--seg-1",
+    weight:13.2, entry:122.91, current:159.38, icon:"hanger", color:"--seg-1",
     report:{ url:"aritzia.html", date:"2026-10-27",
       title:"Aritzia: David in Designer Clothing",
       subtitle:"How Aritzia Is Taking on the Giants of Apparel" } },
   { id:"voo",  name:"Vanguard S&P 500 ETF", ticker:"NYSE Arca: VOO", type:"ETF", currency:"USD",
-    weight:24.1, entry:691.08, current:690.94, icon:"bars", color:"--seg-2", note:"Core index holding",
+    weight:23.8, entry:691.08, current:683.86, icon:"bars", color:"--seg-2", note:"Core index holding",
     report:{ url:"#why-voo", kind:"note", label:"Why I own it" } },
+  { id:"qqq",  name:"Invesco QQQ Trust", ticker:"NASDAQ: QQQ", type:"ETF", currency:"USD",
+    weight:22.8, entry:653.84, current:658.00, icon:"chip", color:"--seg-3", report:null,
+    note:"Growth tilt: the 100 largest Nasdaq companies" },
   { id:"cash", name:"Cash",               ticker:"Ready to deploy", type:"Cash",
-    weight:63.2, entry:null, current:null, icon:"coin", color:"--seg-4", report:null }
+    weight:40.2, entry:null, current:null, icon:"coin", color:"--seg-4", report:null }
 ];
 const TRADES = [
   { date:"2026-10-08", logged:"2026-10-28", side:"buy", name:"Aritzia", ticker:"TSX: ATZ", price:122.91, currency:"CAD", weightAfter:11.4,
     note:"Opened position ahead of Q2 FY27 earnings.", proof:"#verify" },
   { date:"2026-10-30", logged:"2026-10-30", side:"buy", name:"Vanguard S&P 500 ETF", ticker:"NYSE Arca: VOO", price:691.08, currency:"USD", weightAfter:24.1,
-    note:"Started my core S&P 500 position on a down day. I plan to build it toward half the portfolio over the coming months.", proof:"#verify" }
+    note:"Started my core S&P 500 position on a down day. I plan to build it toward half the portfolio over the coming months.", proof:"#verify" },
+  { date:"2026-11-05", logged:"2026-11-05", side:"buy", name:"Invesco QQQ Trust", ticker:"NASDAQ: QQQ", price:653.84, currency:"USD", weightAfter:22.8,
+    note:"Added a Nasdaq-100 position for a growth tilt toward the largest tech companies, completing the index-fund quarter of my plan.", proof:"#verify" }
 ];
 /* ------------------------------------------------------------------------- */
 
