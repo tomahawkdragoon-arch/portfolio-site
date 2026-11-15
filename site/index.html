@@ -30,7 +30,7 @@
   --bg:#10110c; --bg-2:#15160f; --surface:#1a1b13; --raise:#212218; --ink:#ece6d4; --muted:#8e8a76; --faint:#5f5d4f; --line:#2b2c21;
   --accent:#b8ab78; --olive:#8f9a52;
   --pos:#9fbf6f; --neg:#cf8264;
-  --seg-1:#7f8a44; --seg-2:#8a5d3b; --seg-3:#a8925c; --seg-4:#4f5144; --on-seg:#f4efe0;
+  --seg-1:#7f8a44; --seg-2:#8a5d3b; --seg-3:#a8925c; --seg-4:#4f5144; --seg-5:#5e7364; --on-seg:#f4efe0;
   --shadow:0 24px 48px -20px rgba(0,0,0,.75);
   --ease:cubic-bezier(.22,1,.36,1);
   --f-display:"Instrument Serif", "Iowan Old Style", Georgia, serif;
@@ -369,10 +369,10 @@ footer p{max-width:72ch; margin:0}
           <figcaption class="proof-cap"><span><strong>CAD account</strong> · Aritzia position and Canadian cash</span><span class="num">Nov 5, 2026</span></figcaption>
         </figure>
         <figure class="proof">
-          <button class="shot" type="button" data-full="proof/usd-holdings-2026-11-05.webp" aria-label="Enlarge the US-dollar account screenshot">
-            <img src="proof/usd-holdings-2026-11-05.webp" width="2880" height="1462" loading="lazy" alt="TD Direct Investing USD account: QQQ and VOO positions plus US-dollar cash, with the account number hidden and each digit of the dollar amounts replaced with an X.">
+          <button class="shot" type="button" data-full="proof/usd-holdings-2026-11-10.webp" aria-label="Enlarge the US-dollar account screenshot">
+            <img src="proof/usd-holdings-2026-11-10.webp" width="2880" height="1478" loading="lazy" alt="TD Direct Investing USD account: QQQ, NVIDIA (NVDA) and VOO positions plus US-dollar cash, with the account number hidden and each digit of the dollar amounts replaced with an X.">
           </button>
-          <figcaption class="proof-cap"><span><strong>USD account</strong> · QQQ, VOO and US-dollar cash</span><span class="num">Nov 5, 2026</span></figcaption>
+          <figcaption class="proof-cap"><span><strong>USD account</strong> · QQQ, NVDA, VOO and US-dollar cash</span><span class="num">Nov 10, 2026</span></figcaption>
         </figure>
       </div>
     </section>
@@ -405,6 +405,30 @@ footer p{max-width:72ch; margin:0}
   </footer>
 </div>
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Brokerage statement" hidden><button class="lb-close" type="button" id="lb-close">Close ×</button><img id="lb-img" src="proof/atz-holdings-2026-11-05.webp" alt="TD Direct Investing account screenshot, enlarged"></div>
+<div class="note-modal" id="note-nvda" role="dialog" aria-modal="true" aria-labelledby="note-nvda-title" hidden>
+  <article class="note-panel">
+    <button class="note-close" type="button" data-close>Close ×</button>
+    <div class="note-kicker"><span class="pill">Opportunistic buy</span>NASDAQ: NVDA</div>
+    <h2 id="note-nvda-title">Why I own NVIDIA</h2>
+    <p class="note-lede">NVIDIA designs the chips that train and run most of today&rsquo;s AI. I bought it on Nov 10, 2026, after news around its then-CEO, Jensen Huang, knocked the stock down.</p>
+    <dl class="note-stats">
+      <div><dt>Average cost</dt><dd>US$169.64</dd></div>
+      <div><dt>Weight today</dt><dd class="js-nvda-weight">9.4%</dd></div>
+      <div><dt>Bought</dt><dd>Nov 10, 2026</dd></div>
+      <div><dt>Report</dt><dd>None</dd></div>
+    </dl>
+    <h3>Why I bought</h3>
+    <ul>
+      <li><strong>A crash is a chance to buy.</strong> In early November, reporting on Huang&rsquo;s relationship with a woman U.S. officials allege is a Chinese spy sent the stock sharply lower. To me, the company&rsquo;s fundamentals didn&rsquo;t change: same products, same customers, same demand for AI chips.</li>
+      <li><strong>My read on the news.</strong> Reports said U.S. officials had known about her for over a year. My bet was that the investigations would not show Huang had passed her any information. That was a guess, not something I could know.</li>
+      <li><strong>The price.</strong> The main reason was simple: the entry was too good a deal not to take.</li>
+    </ul>
+    <h3>The risk</h3>
+    <p>This was a risky buy. The stock was swinging hard on every new headline, and there was no way to know how the story would end. On Nov 12, two days after I bought, Huang resigned as CEO and CFO Colette Kress became interim CEO. A leadership change is a new risk I&rsquo;m watching.</p>
+    <h3>How it fits my system</h3>
+    <p>Honestly, this was an odd purchase. It doesn&rsquo;t follow my process the way Aritzia did, where I wrote the research first and then bought. Here the news set the timing. But the position is small, so if I&rsquo;m wrong it isn&rsquo;t the end of the world, and I still have plenty of room in the portfolio for new companies.</p>
+  </article>
+</div>
 <div class="note-modal" id="note-voo" role="dialog" aria-modal="true" aria-labelledby="note-voo-title" hidden>
   <article class="note-panel">
     <button class="note-close" type="button" data-close>Close ×</button>
@@ -453,21 +477,24 @@ footer p{max-width:72ch; margin:0}
 <script src="feed.js"></script>
 <script type="module">
 /* ---------- Portfolio data: edit this block to update the site ---------- */
-let AS_OF = "2026-11-05";
+let AS_OF = "2026-11-13";
 const HOLDINGS = [
   { id:"atz",  name:"Aritzia",            ticker:"TSX: ATZ", type:"Stock", currency:"CAD",
-    weight:13.2, entry:122.91, current:159.38, icon:"hanger", color:"--seg-1",
+    weight:12.6, entry:122.91, current:155.45, icon:"hanger", color:"--seg-1",
     report:{ url:"aritzia.html", date:"2026-10-27",
       title:"Aritzia: David in Designer Clothing",
       subtitle:"How Aritzia Is Taking on the Giants of Apparel" } },
   { id:"voo",  name:"Vanguard S&P 500 ETF", ticker:"NYSE Arca: VOO", type:"ETF", currency:"USD",
-    weight:23.8, entry:691.08, current:683.86, icon:"bars", color:"--seg-2", note:"Core index holding",
+    weight:24.1, entry:691.08, current:693.38, icon:"bars", color:"--seg-2", note:"Core index holding",
     report:{ url:"#why-voo", kind:"note", label:"Why I own it" } },
   { id:"qqq",  name:"Invesco QQQ Trust", ticker:"NASDAQ: QQQ", type:"ETF", currency:"USD",
-    weight:22.8, entry:653.84, current:658.00, icon:"chip", color:"--seg-3", note:"Growth tilt",
+    weight:23.6, entry:653.84, current:679.89, icon:"chip", color:"--seg-3", note:"Growth tilt",
     report:{ url:"#why-voo", kind:"note", label:"Why I own it" } },
+  { id:"nvda", name:"NVIDIA", ticker:"NASDAQ: NVDA", type:"Stock", currency:"USD",
+    weight:9.4, entry:169.64, current:162.83, icon:"gpu", color:"--seg-5", note:"Opportunistic buy",
+    report:{ url:"#why-nvda", kind:"note", label:"Why I own it" } },
   { id:"cash", name:"Cash",               ticker:"Ready to deploy", type:"Cash",
-    weight:40.2, entry:null, current:null, icon:"coin", color:"--seg-4", report:null }
+    weight:30.2, entry:null, current:null, icon:"coin", color:"--seg-4", report:null }
 ];
 const TRADES = [
   { date:"2026-10-08", logged:"2026-10-28", side:"buy", name:"Aritzia", ticker:"TSX: ATZ", price:122.91, currency:"CAD", weightAfter:11.4,
@@ -475,7 +502,9 @@ const TRADES = [
   { date:"2026-10-30", logged:"2026-10-30", side:"buy", name:"Vanguard S&P 500 ETF", ticker:"NYSE Arca: VOO", price:691.08, currency:"USD", weightAfter:24.1,
     note:"Started my core S&P 500 position on a down day. I plan to build it toward half the portfolio over the coming months.", proof:"#verify" },
   { date:"2026-11-05", logged:"2026-11-05", side:"buy", name:"Invesco QQQ Trust", ticker:"NASDAQ: QQQ", price:653.84, currency:"USD", weightAfter:22.8,
-    note:"Added a Nasdaq-100 position for a growth tilt toward the largest tech companies, completing the index-fund quarter of my plan.", proof:"#verify" }
+    note:"Added a Nasdaq-100 position for a growth tilt toward the largest tech companies, completing the index-fund quarter of my plan.", proof:"#verify" },
+  { date:"2026-11-10", logged:"2026-11-10", side:"buy", name:"NVIDIA", ticker:"NASDAQ: NVDA", price:169.64, currency:"USD", weightAfter:9.7,
+    note:"Bought the drop after news around CEO Jensen Huang sent the stock lower. An opportunistic buy outside my usual process; see Why I own it.", proof:"#verify" }
 ];
 /* ------------------------------------------------------------------------- */
 
@@ -495,11 +524,13 @@ const feedReady = PRICE_FEED && !PRICE_FEED.includes("YOUR-GITHUB-USERNAME");
 const live = (feedReady && await loadLive(PRICE_FEED + "?v=" + Math.floor(Date.now() / 600000))) || await loadLive("data/live.json");
 if (live){
   if (live.asOf) AS_OF = live.asOf;
+  const LH = live.holdings || {};
+  const fullFeed = HOLDINGS.every(h => LH[h.id] && typeof LH[h.id].weight === "number");
   HOLDINGS.forEach(h => {
-    const L = live.holdings && live.holdings[h.id];
+    const L = LH[h.id];
     if (!L) return;
     if (typeof L.price === "number") h.current = L.price;
-    if (typeof L.weight === "number") h.weight = L.weight;
+    if (fullFeed) h.weight = L.weight;
     if (L.currency) h.currency = L.currency;
   });
 }
@@ -513,6 +544,7 @@ const ICONS = {
   hanger:'<path d="M12 7.5a1.8 1.8 0 1 1 1.8 1.8c-.9.4-1.8.9-1.8 1.9v.8"/><path d="M12 12 3.5 17.5h17Z"/>',
   bars:'<path d="M5 19v-6M10 19V8M15 19v-9M20 19V5"/><path d="M3 19.5h18"/>',
   chip:'<rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M10 7V4M14 7V4M10 20v-3M14 20v-3M7 10H4M7 14H4M20 10h-3M20 14h-3"/>',
+  gpu:'<rect x="2.5" y="6.5" width="19" height="10" rx="1.5"/><circle cx="9" cy="11.5" r="2.8"/><path d="M14.5 9.5h4M14.5 11.5h4M14.5 13.5h4M5 16.5v2.5M8 16.5v2.5M11 16.5v2.5"/>',
   coin:'<circle cx="12" cy="12" r="8"/><path d="M14.5 9.3c-.5-.7-1.4-1.1-2.5-1.1-1.5 0-2.5.8-2.5 1.9 0 2.6 5.2 1.3 5.2 3.9 0 1.1-1.1 1.9-2.7 1.9-1.1 0-2.1-.4-2.6-1.2M12 6.6v1.6M12 15.8v1.6"/>'
 };
 
@@ -632,7 +664,7 @@ HOLDINGS.forEach((h, i) => {
     <div class="r num c-ret ${rv == null ? "dim" : rv >= 0 ? "up" : "down"}">${rv == null ? "—" : fmtPct(rv)}</div>
     <div class="c-act">${h.report
       ? `<a class="btn" href="${h.report.url}"${tgt(h.report.url)}>${h.report.label || "View report"} <span aria-hidden="true">→</span></a>`
-      : `<span class="btn off">${h.note ? "Index fund" : "No report"}</span>`}</div>
+      : `<span class="btn off">${h.type === "ETF" ? "Index fund" : h.type === "Cash" ? "No report" : "Report soon"}</span>`}</div>
     <div class="c-mobile num">${h.entry ? `Entry ${fmtMoney(h.entry, h.currency)} · Now ${fmtMoney(h.current, h.currency)} · <span class="${rv >= 0 ? "up" : "down"}">${fmtPct(rv)}</span>` : (h.target ? "Target allocation" : "")}</div>`;
   row.addEventListener("pointerenter", () => { clearTimeout(leaveTimer); activate(h.id, null, true); });
   row.addEventListener("pointerleave", deactivate);
