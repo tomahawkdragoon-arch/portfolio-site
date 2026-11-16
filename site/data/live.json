@@ -1,32 +1,32 @@
 {
-  "asOf": "2026-11-13",
-  "updated": "2026-11-15T21:28:34+00:00",
+  "asOf": "2026-11-16",
+  "updated": "2026-11-16T22:11:22+00:00",
   "fx": {
-    "USDCAD": 1.4267
+    "USDCAD": 1.4292
   },
   "holdings": {
     "atz": {
-      "price": 155.45,
+      "price": 149.31,
       "currency": "CAD",
-      "weight": 12.6
+      "weight": 12.4
     },
     "voo": {
-      "price": 693.38,
+      "price": 680.26,
       "currency": "USD",
       "weight": 24.1
     },
     "qqq": {
-      "price": 679.89,
+      "price": 661.75,
       "currency": "USD",
-      "weight": 23.6
+      "weight": 23.5
     },
     "nvda": {
-      "price": 162.85,
+      "price": 156.14,
       "currency": "USD",
-      "weight": 9.4
+      "weight": 9.2
     },
     "cash": {
-      "weight": 30.2
+      "weight": 30.8
     }
   }
 }
